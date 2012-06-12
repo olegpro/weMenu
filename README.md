@@ -7,7 +7,7 @@ Module for OpenCart
 
 Так как данные меню храняться в системных настройках, меню можно вывести в любом месте на странице, тем самым не ограничиваясь «расположениями»
 
-`Пример` вывода
+Просто вставьте следующий код в любой шаблон, например в `/catalog/view/theme/default/template/common/header.tpl`
 
 ```php
 <?php if($we_menu_cache = $this->config->get('we_menu_cache')){ ?> 

@@ -48,8 +48,8 @@
             <td></td>
           </tr>
         </thead>
-        <?php if(!empty($we_menu)){ ?>
         <?php $first_i = reset($list_inforations); ?>
+        <?php if(!empty($we_menu)){ ?>
         <?php $count = count($we_menu);$i = 0; ?>
         <?php foreach($we_menu as $item){ ?>
         <tbody class="menu-row<?php echo $i; ?>">

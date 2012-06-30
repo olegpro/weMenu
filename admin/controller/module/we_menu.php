@@ -27,7 +27,7 @@ class ControllerModuleWeMenu extends Controller {
                    $count = 0;
                    foreach($menu as $item){
                     if(isset($item['item_enable'])){
-                        $href =  $item['item_type'] == 'article_link' ? $this->url->link('information/information', 'information_id='.$item['item_link']) : $item['item_link'];
+                        $href =  $item['item_type'] == 'article_link' ? $this->getFullUrlInformation($item['item_link']) : $item['item_link'];
                         $href = preg_replace('/admin\//', '', $href);
                         
                         $fields = array(
@@ -134,10 +134,10 @@ class ControllerModuleWeMenu extends Controller {
 			
 		$this->data['modules'] = array();
 		
-		if (isset($this->request->post['menu_module'])) {
-			$this->data['modules'] = $this->request->post['menu_module'];
-		} elseif ($this->config->get('menu_module')) { 
-			$this->data['modules'] = $this->config->get('menu_module');
+		if (isset($this->request->post['we_menu_module'])) {
+			$this->data['modules'] = $this->request->post['we_menu_module'];
+		} elseif ($this->config->get('we_menu_module')) { 
+			$this->data['modules'] = $this->config->get('we_menu_module');
 		}		
 				
 		$this->load->model('design/layout');
@@ -198,6 +198,27 @@ class ControllerModuleWeMenu extends Controller {
 			return false;
 		}	
 	}
+    
+    private function getFullUrlInformation($information_id){
+        $full_url = $this->url->link('information/information', 'information_id='.$information_id);
+        
+        if($this->config->get('config_seo_url')){
+            if ($seo_type = $this->config->get('config_seo_url_type')) {
+                $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE query = 'information_id=" . $this->db->escape($information_id) . "'");
+                if ($query->num_rows) {
+                    $full_url = '/'.$query->row['keyword'].'/';
+                    
+                    if($seo_type == 'seo_pro'){
+            	       if($url_postfix = $this->config->get('config_seo_url_postfix')){
+                	       $full_url = '/'.$query->row['keyword'] . $url_postfix;
+                	   }
+                	}
+                }
+            }
+        }
+        
+        return $full_url;
+    }
     
     private function my_parse_tpl($tpl, $params){
         foreach ($params as $key => $val) {

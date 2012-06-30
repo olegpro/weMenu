@@ -78,11 +78,11 @@
                         <?php } ?>
                         </select>
                         </div>
-                    
+                    <?php if($item['item_type'] == 'clear_link'){ ?>
                     <div class="article_link" style="<?php echo $c_article_link; ?>">
                         <input type="text" name="we_menu[<?php echo $i; ?>][item_link]" value="<?php echo isset($item['item_link']) ? $item['item_link'] : ''; ?>" />
                     </div>   
-                    
+                    <?php } ?>
                     
                 </td>
                 <td class="left"><input type="text" value="<?php echo $item['class']; ?>" size="10" name="we_menu[<?php echo $i; ?>][class]" /></td>

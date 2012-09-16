@@ -33,7 +33,7 @@ $_['entry_menu_class']    = 'CSS класс меню:';
 $_['entry_tpl_row']       = 'Шаблон пункта меню:';
 $_['entry_tpl_row_act']   = 'Шаблон активного пункта меню:';
 
-$_['tpl_row']             = '<li><a href="#href#" class="#class#" "#attributes#>#title#</a></li>';
+$_['tpl_row']             = '<li><a href="#href#" class="#class#" #attributes#>#title#</a></li>';
 $_['tpl_row_act']         = '<li>#title#</li>';
 
 

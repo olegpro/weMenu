@@ -200,7 +200,8 @@ class ControllerModuleWeMenu extends Controller {
 	}
     
     private function getFullUrlInformation($information_id){
-        $full_url = $this->url->link('information/information', 'information_id='.$information_id);
+        //$full_url = $this->url->link('information/information', 'information_id='.$information_id);
+        $full_url = '/index.php?route=information/information&information_id='.$information_id;
         
         if($this->config->get('config_seo_url')){
             if ($seo_type = $this->config->get('config_seo_url_type')) {

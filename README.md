@@ -9,4 +9,4 @@
 
 ```php
 echo $this->registry->get('load')->controller('module/we_menu', array('module_id' => 34));
-```php
+```
